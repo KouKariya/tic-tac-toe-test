@@ -59,8 +59,6 @@ public class TicTacToe{
   //This method is causing a Null Pointer Exception COME BACK LATER
   public static boolean playerWon(){
   
-  
-  
    //rows
    for(int a = 0; a < 3; a++){
      if(squares[a][0] != null && squares[a][1] != null && squares[a][2] != null){
@@ -78,6 +76,14 @@ public class TicTacToe{
          winner = answer;
          return true;
        }
+     }
+   }
+   
+   //Left to Right Diagonal
+   if(squares[0][0] != null && squares[1][1] != null && squares[2][2] != null){
+     if(String.valueOf(squares[0][0]).compareTo(squares[1][1]) == 0 && String.valueOf(squares[0][0]).compareTo(squares[2][2]) == 0){
+       winner = answer;
+       return true;
      }
    }   
     //If none of the conditions are met
