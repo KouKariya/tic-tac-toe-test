@@ -1,7 +1,8 @@
 import java.util.Scanner;
 /**
  * Program that uses a 2D array to create a Tic Tac Toe game
- * @author Jesse G
+ * @author Jesse Gallarzo
+ * @author Adrian Francisco 
  */
 public class TicTacToe{
   
@@ -57,30 +58,29 @@ public class TicTacToe{
   
   //This method is causing a Null Pointer Exception COME BACK LATER
   public static boolean playerWon(){
+  
+  
+  
+   //rows
+   for(int a = 0; a < 3; a++){
+     if(squares[a][0] != null && squares[a][1] != null && squares[a][2] != null){
+       if(String.valueOf(squares[a][0]).compareTo(squares[a][1]) == 0 && String.valueOf(squares[a][0]).compareTo(squares[a][2]) == 0){
+         winner = answer;
+         return true;
+       }
+     }
+   }
    
-   String test = String.valueOf(squares[0][0]);
-   //if(String.valueOf(squares[0][0]).equals(answer))
-    if(String.valueOf(squares[0][1]).equals(answer)){
-      if(String.valueOf(squares[0][2]).equals(answer)){
-        winner = answer;
-        return true;
-        }
-    }
-    
-        
-    if(String.valueOf(squares[1][0]).equals(answer))
-      if(String.valueOf(squares[1][1]).equals(answer))
-        if(String.valueOf(squares[1][2]).equals(answer)){
-          winner = answer;
-          return true;
-         }
-          
-    if(String.valueOf(squares[2][0]).equals(answer))
-      if(String.valueOf(squares[2][1]).equals(answer))
-        if(String.valueOf(squares[2][2]).equals(answer)){
-          winner = answer;
-          return true;
-        }
+   //columns
+   for(int b = 0; b < 3; b++){
+     if(squares[0][b] != null && squares[1][b] != null && squares[2][b] != null){
+       if(String.valueOf(squares[0][b]).compareTo(squares[1][b]) == 0 && String.valueOf(squares[0][b]).compareTo(squares[2][b]) == 0){
+         winner = answer;
+         return true;
+       }
+     }
+   }   
+    //If none of the conditions are met
     return false;
   }
   
@@ -90,7 +90,7 @@ public class TicTacToe{
     while(!isFull() && !playerWon()){
     Scanner keyboard = new Scanner(System.in);
     System.out.println("X or O ?");
-    answer = keyboard.nextLine();
+    answer = keyboard.nextLine(); //Use a loop to make sure the proper 'letters' are being used.
     
     System.out.println("In which position(row)?");
     pos = keyboard.nextInt();
