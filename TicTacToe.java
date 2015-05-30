@@ -1,9 +1,10 @@
-import java.util.Scanner;
 /**
  * Program that uses a 2D array to create a Tic Tac Toe game
  * @author Jesse Gallarzo
- * @author Adrian Francisco 
+ * @author Adrian Francisco Rodriguez
  */
+import java.util.Scanner;
+
 public class TicTacToe{
   
   static String[][] squares = new String[3][3];
@@ -56,7 +57,6 @@ public class TicTacToe{
   }
   
   
-  //This method is causing a Null Pointer Exception COME BACK LATER
   public static boolean playerWon(){
   
    //rows
@@ -86,6 +86,14 @@ public class TicTacToe{
        return true;
      }
    }   
+   
+   //Right to Left Diagonal
+    if(squares[0][2] != null && squares[1][1] != null && squares[2][0] != null){
+     if(String.valueOf(squares[0][2]).compareTo(squares[1][1]) == 0 && String.valueOf(squares[0][2]).compareTo(squares[2][0]) == 0){
+       winner = answer;
+       return true;
+     }
+   } 
     //If none of the conditions are met
     return false;
   }
