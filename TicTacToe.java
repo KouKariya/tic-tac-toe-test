@@ -16,7 +16,7 @@ public class TicTacToe{
   Scanner keyboard;
   
   /**
-   * Method that prints out the 3x3 grid for Tic Tac Toe
+   * Method that prints out the 3x3 grid for Tic Tac Toe.
    */
   public static void printGrid(){
    
@@ -28,6 +28,9 @@ public class TicTacToe{
     
   }
   
+    /**
+   * Method that adds the user's answer to the Tic Tac Toe grid.
+   */
   public static void addAnswer(){
    int count = 0;
      for(int row = 0; row < 3; row++){
@@ -41,6 +44,10 @@ public class TicTacToe{
     }
   }
   
+    /**
+   * Method that checks if the grid is all full. 
+   * @return True if the grid is full. False otherwise.
+   */
   public static boolean isFull(){
     int count = 0; 
     for(int row = 0; row < 3; row++){
@@ -56,7 +63,10 @@ public class TicTacToe{
    return false;
   }
   
-  
+    /**
+   * Method that returns true if either player has met any of the possible win conditions.
+   * @return True if one of the players triggers the win condition. False otherwise.
+   */
   public static boolean playerWon(){
   
    //rows
@@ -98,7 +108,9 @@ public class TicTacToe{
     return false;
   }
   
-  
+    /**
+   * Main method.
+   */
   public static void main(String[] args){
     
     while(!isFull() && !playerWon()){
