@@ -6,12 +6,13 @@
 import java.util.Scanner;
 
 public class TicTacToe{
-  
-  static String[][] squares = new String[3][3];
-  static String answer;
-  static int pos;
-  static String winner = "blank";
-  Scanner keyboard;
+
+    static String[][] squares = new String[3][3];
+    static String answer;
+    static String rep;
+    static int pos;
+    static String winner = "blank";
+    static boolean replay = true;
   
   /**
    * Method that prints out the 3x3 grid for Tic Tac Toe.
@@ -107,39 +108,60 @@ public class TicTacToe{
     //If none of the conditions are met
     return false;
   }
+
+//    public boolean replay(String doReplay){
+//        if(doReplay == "no")
+//            return false;
+//        return true;
+//    }
   
    /**
    * Main method.
    */
-  public static void main(String[] args){
-    
-    //Give the user instructions on how to play.
-    System.out.println("This let's you play Tic Tac Toe from the command line.");
-    System.out.println("Each position(from 1 to 9,left to right,top to bottom) represents a position in the grid.");
-    System.out.println("The player who fills up a row/column/diagonal line with either X's or O's wins.");
-    System.out.println("Let's begin!");
-    
-    //Prints first grid to give users an idea of what the grid looks like.
-    printGrid();
-    
-    //While loop that continues to loop until win/loss condition is met.
-    while(!isFull() && !playerWon()){  
-    Scanner keyboard = new Scanner(System.in);
-    System.out.println("X or O ?");
-    answer = keyboard.nextLine(); //Use a loop to make sure the proper 'letters' are being used.
-    
-    System.out.println("In which position(row)?");
-    pos = keyboard.nextInt();
-    addAnswer();
-    printGrid();
-  
-    }
-    //Once a condition is met...
-    if(isFull() && !winner.equals("x") && !winner.equals("o"))
-         System.out.println("Game Over....");
-    if(winner.equals("x"))
-         System.out.println("Xs are the winner!!!");
-    if(winner.equals("o"))
-         System.out.println("Os are the winner!!!");
+  public static void main(String[] args) {
+      while (replay) {
+          //Give the user instructions on how to play.
+          System.out.println("This let's you play Tic Tac Toe from the command line.");
+          System.out.println("Each position(from 1 to 9,left to right,top to bottom) represents a position in the grid.");
+          System.out.println("The player who fills up a row/column/diagonal line with either X's or O's wins.");
+          System.out.println("Let's begin!");
+
+          //Prints first grid to give users an idea of what the grid looks like.
+          printGrid();
+
+          //While loop that continues to loop until win/loss condition is met.
+          while (!isFull() && !playerWon()) {
+              Scanner keyboard = new Scanner(System.in);
+
+              System.out.println("X or O ?");
+              answer = keyboard.nextLine(); //Use a loop to make sure the proper 'letters' are being used.
+
+              System.out.println("In which position(row)?");
+              pos = keyboard.nextInt();
+              addAnswer();
+              printGrid();
+
+          }
+          //Once a condition is met...
+          Scanner keyboard2 = new Scanner(System.in);
+          if (isFull() && !winner.equals("x") && !winner.equals("o")){
+              System.out.println("Game Over....play again?");
+              rep = keyboard2.nextLine();
+              if(rep.equals("no"))
+                  replay = false;
+          }
+          if (winner.equals("x")){
+              System.out.println("Xs are the winner!!! Play again?");
+              rep = keyboard2.nextLine();
+              if(rep.equals("no"))
+                  replay = false;
+          }
+          if (winner.equals("o")) {
+              System.out.println("Os are the winner!!! Play again?");
+              rep = keyboard2.nextLine();
+              if(rep.equals("no"))
+                  replay = false;
+          }
+      }
   }
 }
